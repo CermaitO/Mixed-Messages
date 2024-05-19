@@ -11,11 +11,17 @@ let adjArray = ["aback","abaft","abandoned","abashed","aberrant","abhorrent","ab
 
 let objPronounArray = ["me", "you", "him", "her", "it", "us", "you", "them"];
 
+let subjPronounArray = ["I", "you", "he", "she", "it", "we", "you", "they"];
+
 let modalArray = ["will", "won't", "can", "can't", "could", "couldn't", "must", "must not", "should", "shouldn't", "have to", "had to"]
 
 let detArray = ["the", "this", "that", "my", "your", "his", "her", "its", "their", "our", "some"];
 
-let detArrayForPluralNouns = ["those", "these"]
+let detArrayForPluralNouns = ["those", "these", "the", "my", "your", "his", "her", "its", "their", "our", "some"];
+
+let prepArray = ["from", "to", "of", "with", "onto", "on", "in", "under", "above", "beside", "without", "about"];
+
+let intensArray = ["very", "quite", "rather", "mostly", "fairly", "a bit", "extremely"];
 
 //deleted previous output after each click
 function clearPreviousOutput() {
@@ -37,37 +43,76 @@ function selectTemplate() {
     pastVerb.classList.add("past-tense-verb");
     let preposition = document.createElement("span");
     preposition.classList.add("prep");
-    let conjunction = document.createElement("span");
-    conjunction.classList.add("conj");
     let det = document.createElement("span");
     det.classList.add("det");
+    let pluralDet = document.createElement("span");
+    det.classList.add("plural-det");
     let modal = document.createElement("span");
     modal.classList.add("modal");
     let subjPronoun = document.createElement("span");
     subjPronoun.classList.add("subj-pronoun");
     let objPronoun = document.createElement("span");
     objPronoun.classList.add("obj-pronoun");
-    
-    randomNum = Math.floor(Math.random() * 5);
+    let conjunction = document.createElement("span")
+    conjunction.innerHTML = " and"
+    let pluralCopula = document.createElement("span");
+    pluralCopula.innerHTML = " are";
+    let singularCopula = document.createElement("span");
+    singularCopula.innerHTML = " is";
+    let intensifier = document.createElement("span");
+    intensifier.classList.add("intens");
+    let fullStop = document.createElement("span");
+    fullStop.innerHTML = "."
 
-    // if (randomNum === 0) {
-        message.appendChild(det)
-        message.appendChild(adj)
-        message.appendChild(noun)
-        message.appendChild(modal)
-        message.appendChild(verb)
-        message.appendChild(objPronoun)
-    // } else if (randomNum === 1) {
+    randomNum = Math.floor(Math.random() * 4);
+
+    if (randomNum === 0) {
+        message.appendChild(det);
+
+        message.appendChild(adj);
+
+        message.appendChild(noun);
+
+        message.appendChild(modal);
+
+        message.appendChild(verb);
+        message.appendChild(fullStop)
+        message.appendChild(objPronoun);
+    } else if (randomNum === 1) {
+            message.append(subjPronoun);
+            message.append(modal);
+
+            message.append(verb);
+  
+            message.append(preposition);
+
+            message.append(pluralDet);
+            message.appendChild(fullStop)
+            message.append(pluralNoun);
+             message.appendChild(fullStop)
         
-    // } else if (randomNum === 2) {
+    } else if (randomNum === 2) {
+            message.append(det);
+            message.append(noun);
+            message.append(conjunction);
+            message.append(pluralDet);
+            message.append(pluralNoun);
+            message.append(pluralCopula);
+            message.append(intensifier);
+            message.append(adj);
+            message.appendChild(fullStop);
         
-    // } else if (randomNum === 3) {
+    } else if (randomNum === 3) {
+            message.appendChild(verb);
+            message.appendChild(det);
+            message.appendChild(intensifier);
+            message.appendChild(adj);
+            message.appendChild(noun);
+            message.appendChild(conjunction);
+            message.appendChild(pluralDet);
+            message.appendChild(pluralNoun);
         
-    // } else if (randomNum === 4) {
-        
-    // } else if (randomNum === 5) {
-        
-    // }
+    };
 }
 
 function selectDeterminer() {
@@ -75,7 +120,7 @@ function selectDeterminer() {
     let randomNum = Math.floor(Math.random() * detArray.length);
     let randomDet = detArray[randomNum];
     for (i = 0; i < spanDet.length; i++) {
-        spanDet[i].innerHTML = randomDet + " ";
+        spanDet[i].innerHTML = " " + randomDet;
     }
 }
 
@@ -84,7 +129,7 @@ function selectPluralDeterminer() {
     let randomNum = Math.floor(Math.random() * detArrayForPluralNouns.length);
     let randomPluralDet = detArrayForPluralNouns[randomNum];
     for (i = 0; i < spanPluralDet.length; i++) {
-        spanPluralDet[i].innerHTML = randomPluralDet + " ";
+        spanPluralDet[i].innerHTML = " " + randomPluralDet;
     }
 }
 
@@ -93,7 +138,7 @@ function selectAdjective() {
     let randomNum = Math.floor(Math.random() * adjArray.length);
     let randomAdj = adjArray[randomNum];
     for (i = 0; i < spanAdj.length; i++) {
-        spanAdj[i].innerHTML = randomAdj + " ";
+        spanAdj[i].innerHTML = " " + randomAdj;
     }
 }
 
@@ -102,7 +147,7 @@ function selectNoun() {
     let randomNum = Math.floor(Math.random() * nounArray.length);
     let randomNoun = nounArray[randomNum];
     for (i = 0; i < spanNoun.length; i++) {
-        spanNoun[i].innerHTML = randomNoun + " ";
+        spanNoun[i].innerHTML = " " + randomNoun;
     }
 }
 
@@ -111,7 +156,7 @@ function selectPluralNoun() {
     let randomNum = Math.floor(Math.random() * pluralNounArray.length);
     let randomPluralNoun = pluralNounArray[randomNum];
     for (i = 0; i < spanPluralNoun.length; i++) {
-        spanPluralNoun[i].innerHTML = randomPluralNoun + " ";
+        spanPluralNoun[i].innerHTML = " " + randomPluralNoun;
     }
 }
 
@@ -120,7 +165,7 @@ function selectModal() {
     let randomNum = Math.floor(Math.random() * modalArray.length);
     let randomModal = modalArray[randomNum];
     for (i = 0; i < spanModal.length; i++) {
-        spanModal[i].innerHTML = randomModal + " ";
+        spanModal[i].innerHTML =  " " + randomModal;
     }
 }
 
@@ -129,7 +174,7 @@ function selectVerb() {
     let randomNum = Math.floor(Math.random() * verbArray.length);
     let randomVerb = verbArray[randomNum];
     for (i = 0; i < spanVerb.length; i++) {
-        spanVerb[i].innerHTML = randomVerb + " ";
+        spanVerb[i].innerHTML =  " " + randomVerb;
     }
 }
 
@@ -138,7 +183,34 @@ function selectObjPronoun() {
     let randomNum = Math.floor(Math.random() * objPronounArray.length);
     let randomPronoun = objPronounArray[randomNum];
     for (i = 0; i < spanObjPronoun.length; i++) {
-        spanObjPronoun[i].innerHTML = randomPronoun + " ";
+        spanObjPronoun[i].innerHTML = " " + randomPronoun;
+    }
+}
+
+function selectSubjPronoun() {
+    let spanSubjPronoun = document.getElementsByClassName("subj-pronoun");
+    let randomNum = Math.floor(Math.random() * subjPronounArray.length);
+    let randomPronoun = subjPronounArray[randomNum];
+    for (i = 0; i < spanSubjPronoun.length; i++) {
+        spanSubjPronoun[i].innerHTML = " " + randomPronoun;
+    }
+}
+
+function selectPreposition() {
+    let spanPrep = document.getElementsByClassName("prep");
+    let randomNum = Math.floor(Math.random() * prepArray.length);
+    let randomPrep = prepArray[randomNum];
+    for (i = 0; i < spanPrep.length; i++) {
+        spanPrep[i].innerHTML = " " + randomPrep;
+    }
+}
+
+function selectIntensifier() {
+    let spanIntens = document.getElementsByClassName("intens");
+    let randomNum = Math.floor(Math.random() * intensArray.length);
+    let randomIntens = intensArray[randomNum];
+    for (i = 0; i < spanIntens.length; i++) {
+        spanIntens[i].innerHTML = " " + randomIntens;
     }
 }
 
@@ -153,4 +225,7 @@ function createRandomMessage() {
     selectVerb();
     selectAdjective();
     selectObjPronoun();
+    selectSubjPronoun();
+    selectPreposition();
+    selectIntensifier();
 }
