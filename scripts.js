@@ -81,15 +81,11 @@ function selectTemplate() {
     } else if (randomNum === 1) {
             message.append(subjPronoun);
             message.append(modal);
-
             message.append(verb);
-  
             message.append(preposition);
-
             message.append(pluralDet);
-            message.appendChild(fullStop)
             message.append(pluralNoun);
-             message.appendChild(fullStop)
+            message.appendChild(fullStop)
         
     } else if (randomNum === 2) {
             message.append(det);
@@ -111,6 +107,7 @@ function selectTemplate() {
             message.appendChild(conjunction);
             message.appendChild(pluralDet);
             message.appendChild(pluralNoun);
+            message.appendChild(fullStop)
         
     };
 }
